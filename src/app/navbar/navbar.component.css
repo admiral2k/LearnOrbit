@@ -21,7 +21,7 @@
 .navbar-light .navbar-nav .nav-link.disabled {
   position: relative;
   cursor: not-allowed;
-  pointer-events: hover;
+  pointer-events: auto;
 }
 
 /* tooltip */
