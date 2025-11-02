@@ -15,7 +15,7 @@
 }
 
 .navbar-light .navbar-nav .nav-item .nav-link.disabled:hover {
-  color: rgba(0, 0, 0, .3);
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .navbar-light .navbar-nav .nav-link.disabled {
@@ -25,8 +25,9 @@
 }
 
 /* tooltip */
+/* TODO: fix for mobile screens */
 .navbar-light .navbar-nav .nav-link.disabled::after {
-  content: "Coming soon";
+  content: 'Coming soon';
   position: absolute;
   top: 100%;
   left: 50%;
