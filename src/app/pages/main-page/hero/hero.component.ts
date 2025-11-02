@@ -31,7 +31,7 @@ export class HeroComponent implements OnInit {
     const wordEl = this.changingWord?.nativeElement;
     if (!wordEl) return;
 
-    // плавное исчезновение
+    // smooth disappearing
     wordEl.style.opacity = '0';
     setTimeout(() => {
       this.currentIndex = (this.currentIndex + 1) % this.topics.length;

@@ -1,12 +1,12 @@
 .how-it-works {
   min-height: 100vh;
-  background: linear-gradient(180deg, #5b47d0 0%, #f8f9fc 100%);
+  background: linear-gradient(180deg, #5b47d0 0%, #9b9eff 100%);
   color: #1b1f3b;
   padding: 100px 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -1px; /* устраняет визуальный шов */
+  margin-top: -1px;
 }
 
 .container {
@@ -17,15 +17,15 @@
 .section-title {
   font-size: 2.8rem;
   font-weight: 700;
-  color: #1b1f3b;
-  margin-bottom: 1rem;
+  color: #eeeeee;
+  margin-bottom: 0.5rem;
 }
 
 .section-subtitle {
   font-size: 1.2rem;
-  color: rgba(27, 31, 59, 0.95); /* более насыщенный тёмный цвет */
+  color: #eeeeeee0;
   font-weight: 400;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* лёгкая тень улучшает читаемость */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* for better readability. May change it later though */
   margin-bottom: 3rem;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .step {
-  background: #fff;
+  background: #eeeeee;
   border-radius: 20px;
   padding: 2rem;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -68,12 +68,7 @@
   line-height: 1.5;
 }
 
-/* плавное соединение с hero */
-.hero + .how-it-works {
-  margin-top: -2px;
-}
 
-/* адаптив */
 @media (max-width: 768px) {
   .steps {
     flex-direction: column;

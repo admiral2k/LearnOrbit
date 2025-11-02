@@ -14,18 +14,17 @@ export class NavbarComponent {
     this.windowService.scrollToSection(sectionId)
   }
 
-  // перехватываем все клики по navbar
   @HostListener('click', ['$event'])
   onNavbarClick(event: Event) {
     const target = event.target as HTMLElement;
 
-    // если клик по disabled → ничего не делаем
+    // if clicked on disabled → skip
     if (target.closest('.nav-link.disabled')) return;
 
     // if has data-scroll -> skip and let scrollToSection() work 
     if (target.closest('[data-scroll]')) return;
 
-    // обычный клик по логотипу или навигации
+    // normal click on logo or nav-links
     if (target.closest('.nav-link') || target.closest('.navbar-brand')) {
       const navbar = document.querySelector('.navbar');
       if (navbar) {
