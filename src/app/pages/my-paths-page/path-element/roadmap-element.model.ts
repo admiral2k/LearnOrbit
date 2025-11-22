@@ -6,3 +6,9 @@ export interface RoadmapElement {
     text: string;
     status: RoadMapElementStatus;
 }
+
+export const StatusColorMap = {
+    'OPEN': '#00cfff',
+    'IN_PROGRESS': '#a066ff',
+    'DONE': '#25d67e',
+} 

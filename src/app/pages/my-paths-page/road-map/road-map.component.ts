@@ -1,6 +1,7 @@
 import { Component, input, signal } from '@angular/core';
 import { PathElementComponent } from "../path-element/path-element.component";
 import { RoadmapElement } from '../path-element/roadmap-element.model';
+import { StatusColorMap } from '../path-element/roadmap-element.model';
 import 'leader-line-new';
 declare const LeaderLine: any;
 
@@ -24,8 +25,18 @@ export class RoadMapComponent {
 
 
       if (el1 && el2) {
-        const line = new LeaderLine(el1, el2, { endPlug: "disc" });
-        setInterval(() => line.position(), 16); //TODO: Optimaze, may cause performance issues
+        const startColor = StatusColorMap[this.roadMapElements()[i].status]
+        const endColor = StatusColorMap[this.roadMapElements()[i + 1].status]
+
+        const line = new LeaderLine(el1, el2, {
+          startPlugColor: startColor,
+          endPlugColor: endColor,
+          gradient: true,
+          endPlug: "disc",
+          size: 4
+        });
+        setInterval(() => {line.position()
+        }, 16); //TODO: Optimaze, may cause performance issues
         this.lines.update((prevLines) => [...prevLines, line])
       }
     }
