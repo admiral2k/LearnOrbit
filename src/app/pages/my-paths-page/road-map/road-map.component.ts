@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, DestroyRef, inject, input, signal } from '@angular/core';
 import { PathElementComponent } from "../path-element/path-element.component";
 import { RoadmapElement } from '../path-element/roadmap-element.model';
 import { StatusColorMap } from '../path-element/roadmap-element.model';
@@ -15,9 +15,12 @@ declare const LeaderLine: any;
 export class RoadMapComponent {
   roadMapElements = input.required<RoadmapElement[]>()
   private lines = signal<typeof LeaderLine[]>([])
+  private destroyRef = inject(DestroyRef)
+  private intervalId?: number
 
 
   ngAfterViewInit() {
+    console.log("1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111")
     for (let i = 0; i < this.roadMapElements().length; i++) {
       if (i == this.roadMapElements().length - 1) break // skip last element BC it has no next element to build a LeaderLine to
       const el1 = document.getElementById('roadMapEl' + this.roadMapElements()[i].id);
@@ -35,10 +38,25 @@ export class RoadMapComponent {
           endPlug: "disc",
           size: 4
         });
-        setInterval(() => {line.position()
-        }, 16); //TODO: Optimaze, may cause performance issues
         this.lines.update((prevLines) => [...prevLines, line])
       }
     }
+
+    // Realtime GUI update for reactivity
+    this.intervalId = setInterval(() => {
+      this.lines().forEach(line => line.position());
+    }, 16); //TODO: Optimaze, may cause performance issues 
+
+    // Clean-up
+    this.destroyRef.onDestroy(() => {
+
+      console.log('RoadMap destroyed — cleaning up LeaderLine & intervals');
+
+      if (this.intervalId) clearInterval(this.intervalId);
+
+      this.lines().forEach(line => line.remove());
+    }
+    )
+    console.log(this.lines())
   }
 }
