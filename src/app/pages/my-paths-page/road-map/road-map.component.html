@@ -1,0 +1,5 @@
+<p>RoadMap comp starts here!</p>
+@for (roadMapEl of roadMapElements(); track roadMapEl.id) {
+<p>{{ roadMapEl.id + ' ' + roadMapEl.title + ' ' + roadMapEl.text + ' ' + roadMapEl.status }}</p>
+<app-path-element [pathElementObj]="roadMapEl"></app-path-element>
+}

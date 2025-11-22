@@ -1,0 +1,105 @@
+.roadmap-item {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 14px;
+  background: #0f1122;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(8px);
+  color: #eaeaea;
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  border-radius: 6px;
+  background: #444;
+  opacity: 0.7;
+  transition: background 0.25s ease;
+}
+
+.roadmap-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 28px rgba(0, 200, 255, 0.15);
+}
+.roadmap-item:hover h3.title {
+  text-shadow: 0 0 28px rgba(0, 200, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.title {
+  display: inline-block;
+  font-size: 1.3rem;
+
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: none;
+  transition: all 0.25s ease;
+}
+
+.text {
+  margin-top: 0.5rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.state-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  background: rgb(33, 35, 51);
+  transition: all 0.25s ease;
+}
+
+/* Status colors */
+
+.status-open .status-bar {
+  background: #00cfff;
+  box-shadow: 0 0 12px #00cfff;
+}
+
+.status-open .state-badge {
+  color: #00cfff;
+}
+
+.roadmap-item:hover.status-open .state-badge {
+  background-color: #00cfff;
+  color: rgb(33, 35, 51);
+}
+
+.status-progress .status-bar {
+  background: #a066ff;
+  box-shadow: 0 0 12px #a066ff;
+}
+.status-progress .state-badge {
+  color: #a066ff;
+}
+.roadmap-item:hover.status-progress .state-badge {
+  background-color: #a066ff;
+  color: rgb(33, 35, 51);
+}
+
+.status-done .status-bar {
+  background: #25d67e;
+  box-shadow: 0 0 12px #25d67e;
+}
+.status-done .state-badge {
+  color: #25d67e;
+}
+
+.roadmap-item:hover.status-done .state-badge {
+  background-color:#25d67e;
+  color:  rgb(33, 35, 51)
+}
