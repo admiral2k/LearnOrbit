@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class PathElementComponent {
   pathElementObj = input.required<RoadmapElement>()
+  id = input.required<string>()
   
   get statusClass() {
     return {
