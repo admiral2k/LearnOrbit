@@ -1,9 +1,9 @@
 from fastapi import APIRouter, status
-from uuid import uuid4
 
 from app.schemas.roadmaps import RoadmapCreate, RoadmapRead
+from app.services.roadmap_service import RoadmapService
 
-router = APIRouter(prefix="/roadmaps")
+router = APIRouter(prefix="/roadmaps", tags=["roadmaps"])
 
 
 @router.post(
@@ -12,10 +12,5 @@ router = APIRouter(prefix="/roadmaps")
     status_code=status.HTTP_201_CREATED,
 )
 def create_roadmap(data: RoadmapCreate):
-    roadmap_id = str(uuid4())
-
-    return RoadmapRead(
-        id=roadmap_id,
-        topic=data.topic,
-        level=data.level,
-    )
+    roadmap = RoadmapService.create_roadmap(data.topic, data.level)
+    return RoadmapRead(**roadmap.__dict__)

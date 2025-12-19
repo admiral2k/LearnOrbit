@@ -1,12 +1,15 @@
 from pydantic import BaseModel
-from typing import Literal
+
+from app.domain.roadmaps import RoadmapLevel
+
 
 
 class RoadmapCreate(BaseModel):
     topic: str
-    level: Literal["beginner", "junior", "middle"]
+    level: RoadmapLevel
+
 
 class RoadmapRead(BaseModel):
     id: str
     topic: str
-    level: Literal["beginner", "junior", "middle"]
+    level: RoadmapLevel
