@@ -14,3 +14,4 @@ class Roadmap:
     id: str
     topic: str
     level: RoadmapLevel
+
