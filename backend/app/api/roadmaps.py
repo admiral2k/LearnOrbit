@@ -1,9 +1,8 @@
 from dataclasses import asdict
-from fastapi import APIRouter, HTTPException, status
 
-from app.domain.errors import RoadmapNotFound
 from app.schemas.roadmaps import RoadmapCreate, RoadmapRead
 from app.services.roadmap_service import RoadmapService
+from fastapi import APIRouter, status
 
 router = APIRouter(prefix="/roadmaps", tags=["roadmaps"])
 

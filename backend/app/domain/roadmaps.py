@@ -1,5 +1,5 @@
-from enum import Enum
 from dataclasses import dataclass
+from enum import Enum
 
 
 class RoadmapLevel(str, Enum):
@@ -14,4 +14,3 @@ class Roadmap:
     id: str
     topic: str
     level: RoadmapLevel
-
