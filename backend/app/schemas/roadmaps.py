@@ -1,3 +1,4 @@
+from uuid import UUID
 from pydantic import BaseModel
 
 from app.domain.roadmaps import RoadmapLevel
@@ -9,6 +10,6 @@ class RoadmapCreate(BaseModel):
 
 
 class RoadmapRead(BaseModel):
-    id: str
+    id: UUID
     topic: str
     level: RoadmapLevel

@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
+from uuid import UUID
 
 
 class RoadmapLevel(str, Enum):
@@ -11,6 +12,6 @@ class RoadmapLevel(str, Enum):
 
 @dataclass(frozen=True)
 class Roadmap:
-    id: str
+    id: UUID
     topic: str
     level: RoadmapLevel

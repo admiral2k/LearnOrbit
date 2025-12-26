@@ -1,4 +1,5 @@
 from dataclasses import asdict
+from uuid import UUID
 
 from fastapi import APIRouter, status
 
@@ -19,6 +20,6 @@ def create_roadmap(data: RoadmapCreate):
 
 
 @router.get("/{roadmap_id}", response_model=RoadmapRead)
-def get_roadmap(roadmap_id: str) -> RoadmapRead:
+def get_roadmap(roadmap_id: UUID) -> RoadmapRead:
     roadmap = RoadmapService.get_roadmap(roadmap_id)
     return RoadmapRead(**asdict(roadmap))
