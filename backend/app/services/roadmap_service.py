@@ -2,11 +2,12 @@ from uuid import uuid4, UUID
 
 from app.domain.errors import RoadmapNotFound
 from app.domain.roadmaps import Roadmap, RoadmapLevel
+from app.repositories.roadmap_repository import RoadmapRepository
 
 
 class RoadmapService:
-    # TODO: change to the DB
     _roadmaps: dict[UUID, Roadmap] = {}
+    _repo = RoadmapRepository()
 
     @staticmethod
     def create_roadmap(topic: str, level: RoadmapLevel) -> Roadmap:
@@ -16,17 +17,12 @@ class RoadmapService:
             topic=topic,
             level=level,
         )
-        RoadmapService._save_roadmap(roadmap)
+        RoadmapService._repo.create_roadmap(roadmap)
         return roadmap
 
     @staticmethod
-        roadmap = RoadmapService._roadmaps.get(roadmap_id)
     def get_roadmap(roadmap_id: UUID) -> Roadmap:
+        roadmap = RoadmapService._repo.get_roadmap_by_id(roadmap_id)
         if roadmap is None:
             raise RoadmapNotFound(roadmap_id)
         return roadmap
-
-    # TODO: Change to the DB
-    @staticmethod
-    def _save_roadmap(roadmap: Roadmap) -> None:
-        RoadmapService._roadmaps[roadmap.id] = roadmap
