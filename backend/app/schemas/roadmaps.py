@@ -1,5 +1,6 @@
-from app.domain.roadmaps import RoadmapLevel
 from pydantic import BaseModel
+
+from app.domain.roadmaps import RoadmapLevel
 
 
 class RoadmapCreate(BaseModel):
